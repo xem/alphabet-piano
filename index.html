@@ -5,10 +5,13 @@
 <br>Use the second field to compose a second track.
 <br>
 <br>
-1) <input id=i1 value="nruuru00nruyuu00svzvss00ruuuru00rsvzxsvuuuuu" size=80>
+<hr>
+<br>
+
+1) <input id=i1 value="nruuru00nruyus00svzvsv00ruuuru00rsvzvsvuuuuu" size=80>
 <br>
 <br>
-2) <input id=i2 value="zyxxxy00zyxxxy00zyxxxy00zyxxxy00zzzyyyxxwwww" size=80>
+2) <input id=i2 value="zyyyxx00zyyyxx00zyyyxx00zyxxxy00zyyyyxxyyyyy" size=80>
 <br>
 <br>
 
@@ -16,6 +19,31 @@ Note length: <input id=inter value=0.3 size=4>
 <br>
 <br>
 <button id=p>PLAY</button>
+
+<br>
+<br>
+<hr>
+<br>
+Player's source code:
+<br>
+<br>
+<textarea cols=70 rows=17>P = D => {
+  if(D){
+    inte = +inter.value;
+    with(new AudioContext)
+    with(G=createGain())
+    for(i=0;i<D.length;i++)
+    with(createOscillator())
+    if(D[i=+i] && D[i] != "0")
+    connect(G),
+    G.connect(destination),
+    start(i*inte+.3),
+    frequency.setValueAtTime(440*1.06**(115-D.charCodeAt(i)),i*inte+.3),type='wave',
+    gain.setValueAtTime(.5,i*inte+.3),
+    gain.setTargetAtTime(.001,i*inte+.3+.1,.05),
+    stop(i*inte+.3+inte - .01);
+  }
+}</textarea>
 
 <script>
 pl = D => {
@@ -28,11 +56,11 @@ pl = D => {
     if(D[i=+i] && D[i] != "0")
     connect(G),
     G.connect(destination),
-    start(i*.3),
-    frequency.setValueAtTime(440*1.06**(115-D.charCodeAt(i)),i*inte),type='wave',
-    gain.setValueAtTime(.5,i*inte),
-    gain.setTargetAtTime(.001,i*inte+.1,.05),
-    stop(i*inte+inte - .01);
+    start(i*inte+.3),
+    frequency.setValueAtTime(440*1.06**(115-D.charCodeAt(i)),i*inte+.3),type='wave',
+    gain.setValueAtTime(.5,i*inte+.3),
+    gain.setTargetAtTime(.001,i*inte+.3+.1,.05),
+    stop(i*inte+.3+inte - .01);
   }
 };
 
