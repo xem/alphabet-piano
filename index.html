@@ -15,7 +15,7 @@
 <br>
 <br>
 
-Note length: <input id=inter value=0.3 size=4>
+Note length: <input id=Ir value=0.3 size=4>
 <br>
 <br>
 <button id=p>PLAY</button>
@@ -27,42 +27,43 @@ Note length: <input id=inter value=0.3 size=4>
 Player's source code:
 <br>
 <br>
-<textarea cols=90 rows=16>P = D => {
-  if(D){
-    inte = +inter.value;
-    with(new AudioContext)
-    with(G=createGain())
-    for(i=0;i<D.length;i++)
-    with(createOscillator())
-    if(D[i=+i] && D[i] != "0")
-    connect(G),
-    G.connect(destination),
-    start(i*inte+.3),
-    frequency.setValueAtTime(440*1.06**(-105+D.charCodeAt(i)),i*inte+.3),type='wave',
-    gain.setValueAtTime(.5,i*inte+.3),
-    gain.setTargetAtTime(.001,i*inte+.3+.1,.05),
-    stop(i*inte+.3+inte - .01);
-  }
-};</textarea>
+<textarea cols=80 rows=16>P = D => {
+  if(!D)return;           // D = melody string (a-z + 0 for silence)
+  I=+Ir.value;            // I = note length in seconds
+  with(new AudioContext)
+  with(G=createGain())
+  for(i=0;i<D.length;i++)
+  with(createOscillator())
+  if(D[i=+i]&&D[i]!="0")
+  connect(G),
+  G.connect(destination),
+  start(i*I+.3),
+  frequency.setValueAtTime(440*1.06**(-105+D.charCodeAt(i)),i*I+.3),
+  type='wave',
+  gain.setValueAtTime(.5,i*I+.3),
+  gain.setTargetAtTime(.001,i*I+.3+.1,.05),
+  stop(i*I+.3+I-.01);
+}</textarea>
 
 <script>
 P = D => {
-  if(D){
-    inte = +inter.value;
+  if(D){         // D = melody string (a-z + 0 for silence)
+    I=+Ir.value; // I = note length in seconds
     with(new AudioContext)
     with(G=createGain())
     for(i=0;i<D.length;i++)
     with(createOscillator())
-    if(D[i=+i] && D[i] != "0")
+    if(D[i=+i]&&D[i]!="0")
     connect(G),
     G.connect(destination),
-    start(i*inte+.3),
-    frequency.setValueAtTime(440*1.06**(-105+D.charCodeAt(i)),i*inte+.3),type='wave',
-    gain.setValueAtTime(.5,i*inte+.3),
-    gain.setTargetAtTime(.001,i*inte+.3+.1,.05),
-    stop(i*inte+.3+inte - .01);
+    start(i*I+.3),
+    frequency.setValueAtTime(440*1.06**(-105+D.charCodeAt(i)),i*I+.3),
+    type='wave',
+    gain.setValueAtTime(.5,i*I+.3),
+    gain.setTargetAtTime(.001,i*I+.3+.1,.05),
+    stop(i*I+.3+I-.01);
   }
-};
+}
 
 p.onclick = () => {
   P(i1.value);
