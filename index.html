@@ -8,10 +8,10 @@
 <hr>
 <br>
 
-1) <input id=i1 value="nruuru00nruyus00svzvsv00ruuuru00rsvzvsvuuuuu" size=80>
+1) <input id=i1 value="miffif00mifbfh00heaehe00ifffif00iheaehefffff" size=80>
 <br>
 <br>
-2) <input id=i2 value="zyyyxx00zyyyxx00zyyyxx00zyxxxy00zyyyyxxyyyyy" size=80>
+2) <input id=i2 value="aaabbb00aaabbc00aaabbb00aaabbc00aaabbcccbbbb" size=80>
 <br>
 <br>
 
@@ -38,15 +38,15 @@ Player's source code:
     connect(G),
     G.connect(destination),
     start(i*inte+.3),
-    frequency.setValueAtTime(440*1.06**(115-D.charCodeAt(i)),i*inte+.3),type='wave',
+    frequency.setValueAtTime(440*1.06**(-105+D.charCodeAt(i)),i*inte+.3),type='wave',
     gain.setValueAtTime(.5,i*inte+.3),
     gain.setTargetAtTime(.001,i*inte+.3+.1,.05),
     stop(i*inte+.3+inte - .01);
   }
-}</textarea>
+};</textarea>
 
 <script>
-pl = D => {
+P = D => {
   if(D){
     inte = +inter.value;
     with(new AudioContext)
@@ -57,7 +57,7 @@ pl = D => {
     connect(G),
     G.connect(destination),
     start(i*inte+.3),
-    frequency.setValueAtTime(440*1.06**(115-D.charCodeAt(i)),i*inte+.3),type='wave',
+    frequency.setValueAtTime(440*1.06**(-105+D.charCodeAt(i)),i*inte+.3),type='wave',
     gain.setValueAtTime(.5,i*inte+.3),
     gain.setTargetAtTime(.001,i*inte+.3+.1,.05),
     stop(i*inte+.3+inte - .01);
@@ -65,12 +65,12 @@ pl = D => {
 };
 
 p.onclick = () => {
-  pl(i1.value);
-  pl(i2.value);
+  P(i1.value);
+  P(i2.value);
 }
 
 i1.oninput = i2.oninput = e => {
-  pl(e.data);
+  P(e.data);
 }
 </script>
 <style>
